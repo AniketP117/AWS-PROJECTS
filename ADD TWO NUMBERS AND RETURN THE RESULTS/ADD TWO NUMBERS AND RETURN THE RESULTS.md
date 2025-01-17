@@ -159,4 +159,4 @@ aws lambda delete-function --function-name AdditionFunction
 
 ## License
 
-This project is licensed under the MIT License.
+This project is open-source.
