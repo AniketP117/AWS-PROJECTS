@@ -111,9 +111,12 @@ Replace `ACCOUNT_ID` with your AWS account ID.
   "num1": 10,
   "num2": 20
 }
+
 ```
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/90ddf5e5a047dc1f6ba5a90b0869c499ffde1a8b/ADD%20TWO%20NUMBERS%20AND%20RETURN%20THE%20RESULTS/Code%20Implimentation.png)
 
 4. Click **Test** to execute the function.
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/90ddf5e5a047dc1f6ba5a90b0869c499ffde1a8b/ADD%20TWO%20NUMBERS%20AND%20RETURN%20THE%20RESULTS/Code%20Execution%20And%20Test%20Event.png)
 5. Verify the result in the execution logs or the returned response.
 
 #### Test Using AWS CLI
@@ -135,6 +138,7 @@ Check the `response.json` file for the output:
   "body": "{\"result\":30}"
 }
 ```
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/90ddf5e5a047dc1f6ba5a90b0869c499ffde1a8b/ADD%20TWO%20NUMBERS%20AND%20RETURN%20THE%20RESULTS/Result.png)
 
 ---
 
