@@ -1,4 +1,4 @@
-# Upload PDF to S3 Bucket using AWS Lambda (Node.js)
+# Upload PDF to S3 Bucket using AWS Lambda
 
 This project demonstrates how to create an AWS Lambda function in Node.js to upload a PDF or document file to an Amazon S3 bucket. The function decodes a Base64-encoded file and uploads it to the specified bucket. Follow the guide below to deploy and execute the project successfully.
 
