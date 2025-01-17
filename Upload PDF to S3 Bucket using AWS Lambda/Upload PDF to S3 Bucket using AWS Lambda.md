@@ -228,4 +228,4 @@ To avoid unnecessary charges, clean up the resources after testing:
 
 ## License
 
-This project is open-source under the MIT License.
+This project is open-source.
