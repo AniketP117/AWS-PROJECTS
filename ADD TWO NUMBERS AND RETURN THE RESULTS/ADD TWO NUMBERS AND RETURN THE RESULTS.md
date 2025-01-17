@@ -1,4 +1,4 @@
-# Simple Lambda Function for Addition
+# Lambda Function for Addition and Returning Results
 
 This project provides an AWS Lambda function written in Node.js that calculates the sum of two numbers. The function takes input values via an event payload, performs the addition, and returns the result in the response.
 
