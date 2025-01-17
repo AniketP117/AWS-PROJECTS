@@ -125,32 +125,69 @@ Add your Lambda function code here.
 
 ```javascript
 // Sample code for uploading to S3 in Node.js
-const AWS = require('aws-sdk');
-const s3 = new AWS.S3();
+const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
+
+// Configure the S3 client
+const s3 = new S3Client({
+  region: 'ap-south-1', // Replace with your bucket's region
+});
 
 exports.handler = async (event) => {
-  const { fileName, fileContent, bucketName } = event;
-
   try {
-    const buffer = Buffer.from(fileContent, 'base64');
+    // Validate input parameters
+    if (!event.fileName || !event.fileContent || !event.bucketName) {
+      throw new Error('Missing required parameters: fileName, fileContent, or bucketName.');
+    }
 
+    const { fileName, fileContent, bucketName } = event;
+
+    // Determine the ContentType based on the file extension
+    const fileExtension = fileName.split('.').pop().toLowerCase();
+    let contentType;
+
+    switch (fileExtension) {
+      case 'txt':
+        contentType = 'text/plain';
+        break;
+      case 'pdf':
+        contentType = 'application/pdf';
+        break;
+      default:
+        throw new Error('Unsupported file type. Only TXT and PDF files are allowed.');
+    }
+
+    // Decode Base64 file content
+    const fileBuffer = Buffer.from(fileContent, 'base64');
+
+    // Define S3 upload parameters
     const params = {
-      Bucket: bucketName,
-      Key: fileName,
-      Body: buffer,
-      ContentType: 'application/pdf',
+      Bucket: bucketName, // Bucket name
+      Key: fileName, // File name (key) in the bucket
+      Body: fileBuffer, // File content
+      ContentType: contentType, // MIME type based on file type
     };
 
-    await s3.upload(params).promise();
+    // Execute the PutObjectCommand to upload the file
+    const command = new PutObjectCommand(params);
+    const result = await s3.send(command);
 
+    // Return success response
     return {
       statusCode: 200,
-      body: JSON.stringify({ message: 'File uploaded successfully!' })
+      body: JSON.stringify({
+        message: 'File uploaded successfully!',
+        fileUrl: `https://${bucketName}.s3.${s3.config.region}.amazonaws.com/${fileName}`,
+        result,
+      }),
     };
   } catch (error) {
+    // Return failure response with error details
     return {
       statusCode: 500,
-      body: JSON.stringify({ message: 'File upload failed.', error: error.message })
+      body: JSON.stringify({
+        message: 'File upload failed.',
+        error: error.message,
+      }),
     };
   }
 };
