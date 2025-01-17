@@ -186,6 +186,7 @@ Replace `BASE64_ENCODED_CONTENT` with the Base64 string of your file content.
 #### Results
 
 - Check the S3 bucket to confirm the file has been uploaded.
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/13e9f9296b0ef785ad34e7392724c37f41bccf5a/S3%20Bucket%20Page.png)
 - Successful uploads will return a response like:
 
 ```json
