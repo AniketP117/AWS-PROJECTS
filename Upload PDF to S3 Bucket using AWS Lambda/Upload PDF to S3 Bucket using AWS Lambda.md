@@ -91,6 +91,8 @@ Create an IAM role that allows Lambda to write to your S3 bucket:
 5. Attach the IAM role created earlier.
 6. Paste the code from the `index.js` file (from this repository) into the inline code editor.
 7. Save the function.
+![Alt Text](image-url-or-path)
+
 
 #### Using AWS CLI:
 
