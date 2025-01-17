@@ -72,6 +72,7 @@ The function will return a response with the result of the addition:
 6. Attach an IAM role with basic Lambda execution permissions.
 7. Copy and paste the function code into the inline editor.
 8. Save the function.
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/4113e876da23902a392d67349d8fc384761a888e/ADD%20TWO%20NUMBERS%20AND%20RETURN%20THE%20RESULTS/Lambda%20Home%20Page.png)
 
 #### Using AWS CLI
 
