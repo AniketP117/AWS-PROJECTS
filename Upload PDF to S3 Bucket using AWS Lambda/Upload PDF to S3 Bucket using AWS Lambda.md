@@ -117,9 +117,48 @@ Replace `ACCOUNT_ID` with your AWS account ID.
 
 ---
 
-### 6. Test the Function
+### 6. Code and Implementation
 
-You can test the Lambda function using a sample payload:
+#### Code
+
+Add your Lambda function code here.
+
+```javascript
+// Sample code for uploading to S3 in Node.js
+const AWS = require('aws-sdk');
+const s3 = new AWS.S3();
+
+exports.handler = async (event) => {
+  const { fileName, fileContent, bucketName } = event;
+
+  try {
+    const buffer = Buffer.from(fileContent, 'base64');
+
+    const params = {
+      Bucket: bucketName,
+      Key: fileName,
+      Body: buffer,
+      ContentType: 'application/pdf',
+    };
+
+    await s3.upload(params).promise();
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'File uploaded successfully!' })
+    };
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'File upload failed.', error: error.message })
+    };
+  }
+};
+```
+
+---
+
+### 7. Test and Results
 
 #### Test Event
 
@@ -135,16 +174,36 @@ Prepare a test event in JSON format as shown below:
 
 Replace `BASE64_ENCODED_CONTENT` with the Base64 string of your file content.
 
-#### Test Execution:
+#### Execution
 
-1. Go to the **Test** tab in the Lambda Console.
+1. Open the **Test** tab in the Lambda Console.
 2. Paste the JSON payload.
 3. Execute the function by clicking **Test**.
-4. Check the S3 bucket to confirm that the file has been uploaded.
+
+#### Results
+
+- Check the S3 bucket to confirm the file has been uploaded.
+- Successful uploads will return a response like:
+
+```json
+{
+  "statusCode": 200,
+  "body": "{\"message\":\"File uploaded successfully!\"}"
+}
+```
+
+- Errors will return a response like:
+
+```json
+{
+  "statusCode": 500,
+  "body": "{\"message\":\"File upload failed.\",\"error\":\"Error details\"}"
+}
+```
 
 ---
 
-### 7. Troubleshooting
+### 8. Troubleshooting
 
 - **Timeout Errors**: If the file upload exceeds the default timeout, increase the timeout value in the Lambda configuration under **General Configuration**.
 - **Permission Denied**: Ensure the IAM role has the correct permissions to access the specified S3 bucket.
