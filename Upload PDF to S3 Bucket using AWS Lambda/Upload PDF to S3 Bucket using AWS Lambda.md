@@ -73,7 +73,7 @@ Create an IAM role that allows Lambda to write to your S3 bucket:
   ]
 }
 ```
-![IAM Policies](IAM Policies.png)
+![IAM Policies](https://github.com/AniketP117/AWS-PROJECTS/blob/f84ea6d6b3164872b965a02abac59d0d04a360bc/IAM%20Policies.png)
 
 
 5. Save the role as `LambdaS3UploadRole` or any name you prefer.
