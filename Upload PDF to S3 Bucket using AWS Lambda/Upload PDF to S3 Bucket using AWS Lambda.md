@@ -194,6 +194,7 @@ Replace `BASE64_ENCODED_CONTENT` with the Base64 string of your file content.
   "body": "{\"message\":\"File uploaded successfully!\"}"
 }
 ```
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/1996659522b78c9c041b2a251a8361c128ed3be5/Executed%20Funtion%20Result.png)
 
 - Errors will return a response like:
 
