@@ -173,6 +173,7 @@ Prepare a test event in JSON format as shown below:
   "bucketName": "pdf-upload-bucket-node"
 }
 ```
+![Alt Text](https://github.com/AniketP117/AWS-PROJECTS/blob/968e7a502ac14703804e48c61957831bb993335e/Code%20Execution%20Page.png)
 
 Replace `BASE64_ENCODED_CONTENT` with the Base64 string of your file content.
 
